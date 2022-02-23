@@ -1,9 +1,10 @@
-var http = require('http');
+const express = require('express');
+const app = express();
+app.get('/', function (req, res) {
+    res.sendFile('index.html', {root: './' })
+})
+app.listen(1337, () => console.log('Marist Chatter listening on port 1337!'));
 
-http.createServer(function (request, response) {
-  response.writeHead(200, {
-    'Content-Type': 'text/plain'
-  });
-   response.end('Hello World\n');
-  }).listen(1337);
-console.log('Server running on port 1337!');
+app.get('/page1', function (req, res) {
+    res.sendFile('page1.html', {root: './' })
+})
